@@ -5,9 +5,8 @@ let mc = require("mongodb").MongoClient, url = "mongodb://localhost";
 let db;
 
 app.use(express.static("../client"));
-app.listen(8000);
 
-mc.connect(url, fuction(err, client){
+mc.connect(url, function(err, client){
 	if (err) console.log(err.stack);
 	db = client.db("countries");
 	app.listen(8000);
@@ -16,7 +15,7 @@ mc.connect(url, fuction(err, client){
 });
 
 function getArray(){
-	db.collectin("areas").find({}).toArray(
+	db.collection("areas").find({}).toArray(
 	function(err, doc){
 		for (country of doc){
 			console.log(country.name, country.area, country.en)
